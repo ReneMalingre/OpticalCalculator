@@ -111,41 +111,73 @@
     </main>
     <footer></footer>
     <script>
-        document.getElementById("existing-rgp-base-curve").addEventListener('input', calculate);
-        document.getElementById("existing-rgp-power").addEventListener('input', calculate);
-        document.getElementById("over-refraction").addEventListener('input', calculate);
-        document.getElementById("new-rgp-base-curve").addEventListener('input', calculate);
-        document.getElementById("vertex-distance").addEventListener('input', calculate);
+      // set focus to the first input field
+      var inputField=document.getElementById("existing-rgp-base-curve");
+      inputField.focus();
+      inputField.select();
+
+      // add event listeners to the input fields to calculate the result when the user changes the value.
+      // also add a listener to select the text when the user clicks on the input field
+      var input1 =  document.getElementById("existing-rgp-base-curve")
+      input1.addEventListener('input', calculate);
+      input1.addEventListener('change', calculate);
+      input1.addEventListener('focus', function(){
+        input1.select();
+      });
+
+      var input2 =  document.getElementById("existing-rgp-power")
+      input2.addEventListener('input', calculate);
+      input2.addEventListener('change', calculate);
+      input2.addEventListener('focus', function(){
+        input2.select();
+      });
+
+      var input3 =  document.getElementById("over-refraction")
+      input3.addEventListener('input', calculate);
+      input3.addEventListener('change', calculate);
+      input3.addEventListener('focus', function(){
+        input3.select();
+      });
+
+      var input4 =  document.getElementById("new-rgp-base-curve")
+      input4.addEventListener('input', calculate);
+      input4.addEventListener('change', calculate);
+      input4.addEventListener('focus', function(){
+        input4.select();
+      });
+
+      var input5 =  document.getElementById("vertex-distance")
+      input5.addEventListener('input', calculate);
+      input5.addEventListener('change', calculate);
+      input5.addEventListener('focus', function(){
+        input5.select();
+      });
+       
         function calculate() {
-          // alert("pressed");
+         
             /* get the elements and check for validity; if all valid, calculate result else display an error */
-            /* create 5 variables for the 4 input fields and the result */
-            
-            
+           
             /* get the values from the input fields */
             var existingbase = document.getElementById("existing-rgp-base-curve");
 
             /* check if all fields are filled */
             /* first the base curve */
             if (existingbase.checkValidity()) {
-                // alert("existing base curve is valid");
                 /* now the power */
                 var existingpower = document.getElementById("existing-rgp-power");
                 if (existingpower.checkValidity()) {
-                  // alert("existing power is valid");
-                    /* now the overrefraction */
+               
+                  /* now the overrefraction */
             			var overrefraction = document.getElementById("over-refraction");
                   if (overrefraction.checkValidity()) {
                     var vertexdistance = document.getElementById("vertex-distance");
                     if (vertexdistance.checkValidity()) {
-                      // alert("vertex distance is valid");
-                    
-
-                    /* now the new base curve */
+               
+                      /* now the new base curve */
                     var newbase = document.getElementById("new-rgp-base-curve");
                     if (newbase.checkValidity()) {
-                        // alert("new base curve is valid");
-                        /* all fields are valid, so calculate the result */
+               
+                      /* all fields are valid, so calculate the result */
                         /* convert the values to numbers */
                         var existingBaseValue;
                         var existingPowerValue;
@@ -175,8 +207,6 @@
                           signDisplay: 'always',
                         });
                         const formattedNumber = formatter.format(newPowerValue);
-
-                        // alert("new power is " +  newPowerValue);
                         /* display the result */
                         document.getElementById("result").innerHTML = "You want the new power to be " + formattedNumber + " D";
                     }

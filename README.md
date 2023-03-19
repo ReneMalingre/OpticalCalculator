@@ -10,6 +10,8 @@ To use this calculator, simply open the `index.html` file in a web browser. The 
 
 To use the RGP Power Adjustment calculator, follow these steps:
 
+Either go to the live page at [renemalingre.github.io/OpticalCalculator/](https://renemalingre.github.io/OpticalCalculator/) or download the repository and open the `index.html` file in a web browser.
+
 1. Enter the details of the existing lens in the first section of the form, including the base curve, power, over-refraction, and vertex distance.
 2. Enter the desired base curve of the new lens in the second section of the form.
 3. The calculator will automatically calculate the new lens power based on the input values and display the result in the third section of the form.

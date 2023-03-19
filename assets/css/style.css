@@ -77,6 +77,14 @@ h3 {
   margin: 0 1rem;
   width: 8ch;
   text-align: right;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-color: var(--color-red);
+  font-weight: 500;
+}
+
+.data-item input:focus {
+  outline-color: var(--color-yellow);
 }
 
 @media screen and (max-width: 400px) {
