@@ -1,0 +1,91 @@
+body {
+  --color-blue: #00a7e1;
+  --color-red: #f06449;
+  --color-yellow: #ffbc42;
+  --color-dark: #0d1f2d;
+  --color-light: #f5f5f5;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  align-items: center;
+  font-size: 1rem;
+}
+
+header {
+  display: block;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 35ch;
+}
+
+h2 {
+  color: var(--color-yellow);
+  margin-bottom: -0.5rem;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+h3 {
+  color: var(--color-red);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.data-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  margin: 1rem;
+  max-width: 35ch;
+  min-width: 16ch;
+  padding: 1rem;
+  border: 1px solid var(--color-light);
+  border-radius: 5px;
+}
+
+.data-item {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.data-item label {
+  min-width: 20ch;
+}
+
+.data-item input {
+  margin: 0 1rem;
+  width: 8ch;
+  text-align: right;
+}
+
+@media screen and (max-width: 400px) {
+  .data-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .data-item input {
+    margin: 0.1rem 0 0.7rem 1ch;
+  }
+}

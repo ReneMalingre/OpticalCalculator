@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="optical, calculator, optometrist, optometry, optician, opticianry, optometry, ophthalmology, ophthalmologist, ophthalmic, ophthalmic technician, contact lenses, contact lens, contact lens fitting, RGP, scleral lens"
+    />
+    <meta
+      name="description"
+      content="Some useful calculators for optometrists"
+    />
+    <title>Optical Calculator</title>
+
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="widget" id="rgp-power-adjustment">
+        <h2>RGP Power Adjustment</h2>
+        <form>
+          <section class="data-entry">
+            
+            <h3>Enter existing lens details:</h3>
+            <div class="data-item">
+              <label for="existing-rgp-base-curve">RGP Base Curve (mm)</label>
+              <input
+                type="number"
+                name="existing-rgp-base-curve"
+                id="existing-rgp-base-curve"
+                placeholder="7.6"
+                required
+                min="4.00"
+                max="20.0"
+                step="0.01"
+                value="7.60"
+              />
+            </div>
+            <div class="data-item">
+            <label for="existing-rgp-power">RGP Power (D)</label>
+            <input
+              type="number"
+              name="existing-rgp-power"
+              id="existing-rgp-power"
+              placeholder="-3.00"
+              required
+              min="-100"
+              max="100"
+              step="0.01"
+              value="0.00"
+            />
+          </div>
+          <div class="data-item">
+            <label for="over-refraction">Over-refraction (D)</label>
+            <input
+              type="number"
+              name="over-refraction"
+              id="over-refraction"
+              placeholder="0.00"
+              required
+              min="-100"
+              max="100"
+              step="0.01"
+              value="0.00"
+            />
+          </div>
+          <div class="data-item">
+            <label for="vertex-distance">Vertex distance (mm)</label>
+            <input
+              type="number"
+              name="vertex-distance"
+              id="vertex-distance"
+              placeholder="0.0"
+              required
+              min="0"
+              max="25"
+              step="0.1"
+              value="12"
+            />
+          </div>
+        </section>
+        <section class="data-entry">
+          <h3>Enter new lens details:</h3>
+       
+        <div class="data-item">
+          <label for="new-rgp-base-curve">RGP Base Curve (mm)</label>
+          <input
+            type="number"
+            name="new-rgp-base-curve"
+            id="new-rgp-base-curve"
+            placeholder="7.6"
+            required
+            min="4.0"
+            max="20"
+            step="0.01"
+            value="7.60"
+          />
+        </div>
+        </section>
+        <section class="data-entry">
+          <h3>New lens power:</h3>
+          <p id="result">not yet calculated</p>
+        </section>
+        </form>
+      </section>
+    </main>
+    <footer></footer>
+    <script>
+        document.getElementById("existing-rgp-base-curve").addEventListener('input', calculate);
+        document.getElementById("existing-rgp-power").addEventListener('input', calculate);
+        document.getElementById("over-refraction").addEventListener('input', calculate);
+        document.getElementById("new-rgp-base-curve").addEventListener('input', calculate);
+        document.getElementById("vertex-distance").addEventListener('input', calculate);
+        function calculate() {
+          // alert("pressed");
+            /* get the elements and check for validity; if all valid, calculate result else display an error */
+            /* create 5 variables for the 4 input fields and the result */
+            
+            
+            /* get the values from the input fields */
+            var existingbase = document.getElementById("existing-rgp-base-curve");
+
+            /* check if all fields are filled */
+            /* first the base curve */
+            if (existingbase.checkValidity()) {
+                // alert("existing base curve is valid");
+                /* now the power */
+                var existingpower = document.getElementById("existing-rgp-power");
+                if (existingpower.checkValidity()) {
+                  // alert("existing power is valid");
+                    /* now the overrefraction */
+            			var overrefraction = document.getElementById("over-refraction");
+                  if (overrefraction.checkValidity()) {
+                    var vertexdistance = document.getElementById("vertex-distance");
+                    if (vertexdistance.checkValidity()) {
+                      // alert("vertex distance is valid");
+                    
+
+                    /* now the new base curve */
+                    var newbase = document.getElementById("new-rgp-base-curve");
+                    if (newbase.checkValidity()) {
+                        // alert("new base curve is valid");
+                        /* all fields are valid, so calculate the result */
+                        /* convert the values to numbers */
+                        var existingBaseValue;
+                        var existingPowerValue;
+                        var overRefractionValue;
+                        var newBaseValue;
+                        var vertexDistanceValue;
+
+                        existingBaseValue = parseFloat(existingbase.value);
+                        existingPowerValue = parseFloat(existingpower.value);
+                        overRefractionValue = parseFloat(overrefraction.value);
+                        newBaseValue = parseFloat(newbase.value);
+                        vertexDistanceValue = parseFloat(vertexdistance.value);
+
+                        /* calculate the result */
+                        // first, calculate the ocular refraction
+                        let ocularRefraction = overRefractionValue/(1 - vertexDistanceValue / 1000 * overRefractionValue);
+
+                        let refractiveIndexTears = 1.336;
+                        let frontSurfaceTearPowerExisting = (refractiveIndexTears - 1) * 1000 / existingBaseValue;
+                        let frontSurfaceTearPowerNew = (refractiveIndexTears - 1) * 1000 / newBaseValue;
+                        let changeInFrontSurfaceTearPower = frontSurfaceTearPowerNew - frontSurfaceTearPowerExisting;
+                        let newPowerValue =  Math.round( (-1 * changeInFrontSurfaceTearPower + ocularRefraction + existingPowerValue) * 100) / 100;
+                        console.log(newPowerValue);
+                        const formatter = new Intl.NumberFormat('en-AU', {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                          signDisplay: 'always',
+                        });
+                        const formattedNumber = formatter.format(newPowerValue);
+
+                        // alert("new power is " +  newPowerValue);
+                        /* display the result */
+                        document.getElementById("result").innerHTML = "You want the new power to be " + formattedNumber + " D";
+                    }
+                    else
+                    {
+                        document.getElementById("result").innerHTML = "Your new base curve is not valid";
+                    }
+                  }
+                    else {
+                      document.getElementById("result").innerHTML = "Your vertex distance is not valid";
+                    }
+                  }
+                  else
+                  {
+                      document.getElementById("result").innerHTML = "Your over-refraction is not valid";
+                  }
+                }
+                else
+                {
+                  document.getElementById("result").innerHTML = "Your existing power is not valid";
+                }
+              }
+              else
+              {
+                document.getElementById("result").innerHTML = "Your existing base curve is not valid";
+              }
+
+            };
+
+    </script>
+  </body>
+</html>
