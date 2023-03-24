@@ -22,7 +22,7 @@ header {
 .widget {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: center;
   justify-content: center;
   margin: 0 auto;
   width: 100%;
@@ -85,6 +85,16 @@ h3 {
 
 .data-item input:focus {
   outline-color: var(--color-yellow);
+}
+
+#result {
+  color: var(--color-blue);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 400px) {
