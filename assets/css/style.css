@@ -3,6 +3,7 @@ body {
   --color-red: #f06449;
   --color-yellow: #ffbc42;
   --color-dark: #0d1f2d;
+  --color-dark-transparent: rgba(13 31 45/ 40%);
   --color-light: #f5f5f5;
 
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -87,14 +88,125 @@ h3 {
   outline-color: var(--color-yellow);
 }
 
+.copyright {
+  color: var(--color-light);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.aec-link {
+  color: var(--color-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.aec-contact-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.aec-logo {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+}
+
+.aec-location {
+  font-size: 0.8rem;
+  color: var(--color-yellow);
+  text-align: left;
+}
+
+.aec-location a {
+  font-size: inherit; /* Makes font size the same as .aec-location */
+  color: inherit; /* Inherits the color from .aec-location */
+  text-decoration: none; /* Optional: Removes underline from links */
+}
+
 #result {
   color: var(--color-blue);
 }
 
 footer {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  align-items: center;
+}
+
+.flex-row-about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: first baseline;
+  gap: 2rem;
+}
+
+.open-modal {
+  font-size: 1rem; /* Adjust size as needed */
+  width: 1.5rem; /* Diameter of the round button */
+  height: 1.5rem; /* Diameter of the round button */
+  border-radius: 50%; /* Makes the button round */
+  background-color: var(--color-dark); /* Uses the background color variable */
+  color: var(--color-red); /* Uses the text color variable */
+  border: 1px solid var(--color-yellow); /* Uses the border color variable */
+  display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.open-modal:hover {
+  background-color: var(--color-light); /* Darker shade on hover */
+  font-weight: bold; /* Makes the text bold on hover */
+  border: 2px solid var(--color-red); /* Changes the border color on hover */
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  margin: 0 auto;
+  width: 100%;
+  max-width: 35ch; /* Matches the .widget class */
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0%); /* Centers the modal */
+  background-color: var(--color-light);
+  border: 1px solid var(--color-yellow);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(255 255 255/ 40%); /* Optional: adds a subtle shadow */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  margin: auto;
+  padding: 5px;
+  width: 90%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 400px) {

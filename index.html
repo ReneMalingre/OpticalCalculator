@@ -14,9 +14,8 @@
     />
     <title>Optical Calculator</title>
 
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <header></header>
@@ -25,7 +24,6 @@
         <h2>RGP Power Adjustment</h2>
         <form>
           <section class="data-entry">
-            
             <h3>Enter existing lens details:</h3>
             <div class="data-item">
               <label for="existing-rgp-base-curve">RGP Base Curve (mm)</label>
@@ -42,74 +40,130 @@
               />
             </div>
             <div class="data-item">
-            <label for="existing-rgp-power">RGP Power (D)</label>
-            <input
-              type="number"
-              name="existing-rgp-power"
-              id="existing-rgp-power"
-              placeholder="-3.00"
-              required
-              min="-100"
-              max="100"
-              step="0.01"
-              value="0.00"
-            />
-          </div>
-          <div class="data-item">
-            <label for="over-refraction">Over-refraction (D)</label>
-            <input
-              type="number"
-              name="over-refraction"
-              id="over-refraction"
-              placeholder="0.00"
-              required
-              min="-100"
-              max="100"
-              step="0.01"
-              value="0.00"
-            />
-          </div>
-          <div class="data-item">
-            <label for="vertex-distance">Vertex distance (mm)</label>
-            <input
-              type="number"
-              name="vertex-distance"
-              id="vertex-distance"
-              placeholder="0.0"
-              required
-              min="0"
-              max="25"
-              step="0.1"
-              value="12"
-            />
-          </div>
-        </section>
-        <section class="data-entry">
-          <h3>Enter new lens details:</h3>
-       
-        <div class="data-item">
-          <label for="new-rgp-base-curve">RGP Base Curve (mm)</label>
-          <input
-            type="number"
-            name="new-rgp-base-curve"
-            id="new-rgp-base-curve"
-            placeholder="7.6"
-            required
-            min="4.0"
-            max="20"
-            step="0.01"
-            value="7.60"
-          />
-        </div>
-        </section>
-        <section class="data-entry">
-          <h3>New lens power:</h3>
-          <p id="result">not yet calculated</p>
-        </section>
+              <label for="existing-rgp-power">RGP Power (D)</label>
+              <input
+                type="number"
+                name="existing-rgp-power"
+                id="existing-rgp-power"
+                placeholder="-3.00"
+                required
+                min="-100"
+                max="100"
+                step="0.01"
+                value="0.00"
+              />
+            </div>
+            <div class="data-item">
+              <label for="over-refraction">Over-refraction (D)</label>
+              <input
+                type="number"
+                name="over-refraction"
+                id="over-refraction"
+                placeholder="0.00"
+                required
+                min="-100"
+                max="100"
+                step="0.01"
+                value="0.00"
+              />
+            </div>
+            <div class="data-item">
+              <label for="vertex-distance">Vertex distance (mm)</label>
+              <input
+                type="number"
+                name="vertex-distance"
+                id="vertex-distance"
+                placeholder="0.0"
+                required
+                min="0"
+                max="25"
+                step="0.1"
+                value="12"
+              />
+            </div>
+          </section>
+          <section class="data-entry">
+            <h3>Enter new lens details:</h3>
+
+            <div class="data-item">
+              <label for="new-rgp-base-curve">RGP Base Curve (mm)</label>
+              <input
+                type="number"
+                name="new-rgp-base-curve"
+                id="new-rgp-base-curve"
+                placeholder="7.6"
+                required
+                min="4.0"
+                max="20"
+                step="0.01"
+                value="7.60"
+              />
+            </div>
+          </section>
+          <section class="data-entry">
+            <div class="flex-row-about">
+              <h3>Lens power to order:</h3>
+              <!-- Button to open the modal -->
+              <button class="open-modal" id="openModal" type="button">?</button>
+            </div>
+            <p id="result">not yet calculated</p>
+          </section>
         </form>
       </section>
     </main>
-    <footer>&#169; Rene Malingre 2023</footer>
+    <footer>
+      <div class="copyright">&#169; René Malingré 2023</div>
+      <div class="aec-contact-details">
+        <a href="https://www.adelaideeyecare.com.au">
+          <img
+            class="aec-logo"
+            src="./assets/images/aec-logo.png"
+            alt="Adelaide Eye Care logo"
+          />
+        </a>
+        <div>
+          <a class="aec-link" href="https://www.adelaideeyecare.com.au"
+            >adelaideeyecare.com.au</a
+          >
+          <p class="aec-location">
+            <a href="https://www.adelaideeyecare.com.au/westbourne-park"
+              >Westbourne Park</a
+            >
+            <a href="tel:+61883732200">(08) 8373 2200</a>
+          </p>
+          <p class="aec-location">
+            <a href="https://www.adelaideeyecare.com.au/mawson-lakes"
+              >Mawson Lakes</a
+            >
+            <a href="tel:+61883591993">(08) 8359 1993</a>
+          </p>
+          <p class="aec-location">
+            <a href="https://www.adelaideeyecare.com.au/blackwood">Blackwood</a>
+            <a href="tel:+61882782141">(08) 8278 2141</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>How this works</h3>
+        <p>
+          This calculates the change in 'tear lens' power when you enter a new
+          base curve radius, and it also calculates the effective power of the
+          over-refraction (using the vertex distance) at the corneal plane, and
+          then it adds these changes in power to the original lens power in
+          order for you to correctly specify the back vertex power of a new RGP
+          contact lens with the new back optic radius. It does not use
+          'rules-of-thumb' to calculate the 'tear lens' adjustment as these are
+          inaccurate for steep lenses.
+        </p>
+      </div>
+    </div>
+
     <script src="./assets/js/optical.js"></script>
   </body>
 </html>
