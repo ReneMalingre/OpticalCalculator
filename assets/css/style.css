@@ -5,7 +5,7 @@ body {
   --color-dark: #0d1f2d;
   --color-dark-transparent: rgba(13 31 45/ 40%);
   --color-light: #f5f5f5;
-
+  --max-width: 40ch;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background-color: var(--color-dark);
@@ -25,9 +25,9 @@ header {
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: auto;
   width: 100%;
-  max-width: 35ch;
+  max-width: var(--max-width);
 }
 
 h2 {
@@ -103,9 +103,11 @@ h3 {
 .aec-contact-details {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 1rem;
-  gap: 1rem;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: var(--max-width);
 }
 
 .aec-logo {
@@ -148,8 +150,8 @@ footer {
 
 .open-modal {
   font-size: 1rem; /* Adjust size as needed */
-  width: 1.5rem; /* Diameter of the round button */
-  height: 1.5rem; /* Diameter of the round button */
+  width: 1.4rem; /* Diameter of the round button */
+  height: 1.4rem; /* Diameter of the round button */
   border-radius: 50%; /* Makes the button round */
   background-color: var(--color-dark); /* Uses the background color variable */
   color: var(--color-red); /* Uses the text color variable */
@@ -175,7 +177,7 @@ footer {
   z-index: 1; /* Sit on top */
   margin: 0 auto;
   width: 100%;
-  max-width: 35ch; /* Matches the .widget class */
+  max-width: var(--max-width); /* Matches the .widget class */
   top: 10%;
   left: 50%;
   transform: translate(-50%, 0%); /* Centers the modal */
